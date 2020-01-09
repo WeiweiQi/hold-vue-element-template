@@ -25,7 +25,7 @@
       </el-table-column>
       <el-table-column label="订单状态" width="77" align="center">
         <template slot-scope="scope">
-          {{ scope.row.pageviews }}
+          {{ scope.row.orderstate }}
         </template>
       </el-table-column>
       <el-table-column label="拼团状态" width="77" align="center">
