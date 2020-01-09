@@ -153,14 +153,13 @@ export const constantRoutes = [
     path: '/ordermanage',
     component: Layout,
     redirect: '/ordermanage',
-    name: 'ordermanage',
-    meta: { title: 'ordermanage', icon: 'example' },
     children: [
       {
-        path: '/ordermanage/index',
-        name: 'ordermanage1',
-        component: () => import('@/views/ordermanage/index'),
-        meta: { title: '订单管理', icon: 'table', roles: ['admin'] }
+        path: 'index',
+        name: 'Ordermanage',
+        component: () => import('@/views/ordermanage'),
+        meta: { title: 'tag1', icon: 'table', roles: ['admin'] },
+        noCache: false
       }
     ]
   },
