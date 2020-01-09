@@ -1,8 +1,22 @@
 import request from '@/utils/request'
 
 export function login(data) {
+  console.log('user/login...')
+  console.log('data:' + data.username)
   return request({
-    url: '/user/login',
+    url: '/vuelogin/mylogin',
+    method: 'post',
+    params: {
+      username: data.username,
+      password: data.password
+    },
+    data
+  })
+}
+
+export function mylogin(data) {
+  return request({
+    url: '/vuelogin/mylogin',
     method: 'post',
     data
   })
@@ -10,7 +24,7 @@ export function login(data) {
 
 export function getInfo(token) {
   return request({
-    url: '/user/info',
+    url: '/vuelogin/info',
     method: 'get',
     params: { token }
   })
@@ -18,7 +32,7 @@ export function getInfo(token) {
 
 export function logout() {
   return request({
-    url: '/user/logout',
+    url: '/vuelogin/logout',
     method: 'post'
   })
 }

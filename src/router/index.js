@@ -51,7 +51,7 @@ export const constantRoutes = [
       path: 'dashboard',
       name: 'Dashboard',
       component: () => import('@/views/dashboard/index'),
-      meta: { title: 'Dashboard', icon: 'dashboard' }
+      meta: { title: '首页', icon: 'dashboard' }
     }]
   },
 
@@ -60,19 +60,19 @@ export const constantRoutes = [
     component: Layout,
     redirect: '/example/table',
     name: 'Example',
-    meta: { title: 'Example', icon: 'example' },
+    meta: { title: '表格', icon: 'example' },
     children: [
       {
         path: 'table',
         name: 'Table',
         component: () => import('@/views/table/index'),
-        meta: { title: 'Table', icon: 'table' }
+        meta: { title: '表格', icon: 'table' }
       },
       {
         path: 'tree',
         name: 'Tree',
         component: () => import('@/views/tree/index'),
-        meta: { title: 'Tree', icon: 'tree' }
+        meta: { title: '树状', icon: 'tree' }
       }
     ]
   },
@@ -85,18 +85,19 @@ export const constantRoutes = [
         path: 'index',
         name: 'Form',
         component: () => import('@/views/form/index'),
-        meta: { title: 'Form', icon: 'form' }
+        meta: { title: '表单', icon: 'form' }
       }
     ]
   },
 
   {
+    alwaysShow: false,
     path: '/nested',
     component: Layout,
     redirect: '/nested/menu1',
     name: 'Nested',
     meta: {
-      title: 'Nested',
+      title: '嵌套',
       icon: 'nested'
     },
     children: [
@@ -149,6 +150,22 @@ export const constantRoutes = [
   },
 
   {
+    path: '/ordermanage',
+    component: Layout,
+    redirect: '/ordermanage',
+    name: 'ordermanage',
+    meta: { title: 'ordermanage', icon: 'example' },
+    children: [
+      {
+        path: '/ordermanage/index',
+        name: 'ordermanage1',
+        component: () => import('@/views/ordermanage/index'),
+        meta: { title: '订单管理', icon: 'table', roles: ['admin'] }
+      }
+    ]
+  },
+
+  {
     path: 'external-link',
     component: Layout,
     children: [
@@ -160,6 +177,25 @@ export const constantRoutes = [
   },
 
   // 404 page must be placed at the end !!!
+  { path: '*', redirect: '/404', hidden: true }
+]
+
+// 异步挂载的路由
+// 动态需要根据权限加载的路由表
+export const asyncRouterMap = [
+  {
+    path: '/permission',
+    component: Layout,
+    name: '权限测试',
+    meta: { roles: ['admin', 'super_editor'] }, // 页面需要的权限
+    children: [
+      {
+        path: 'index',
+        // component: Permission,
+        name: '权限测试页',
+        meta: { roles: ['admin', 'super_editor'] } // 页面需要的权限
+      }]
+  },
   { path: '*', redirect: '/404', hidden: true }
 ]
 
